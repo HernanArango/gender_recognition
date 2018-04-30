@@ -1,7 +1,7 @@
 from local_binary_patterns import LocalBinaryPatterns
 from sklearn.svm import LinearSVC
 from imutils import paths
-#import argparse
+import pickle
 #opencv
 import cv2
  
@@ -27,3 +27,6 @@ for imagePath in paths.list_images("faces/training"):
 # train a Linear SVM on the data
 model = LinearSVC(C=100.0, random_state=42)
 model.fit(data, labels)
+
+
+pickle.dump(model, open("model.save", 'wb'))
